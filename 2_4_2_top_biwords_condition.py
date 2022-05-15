@@ -1,6 +1,5 @@
 """
-Make the 2-gram results of the japanese
-Save the results of different time periods
+Make the bigram results, which is the fig 2 in manuscript
 """
 #%%
 import os
@@ -273,6 +272,7 @@ if os.path.exists(os.path.join(root_dir, 'data', 'top_biwords_conditions_trans.c
     del df_trans_sort
 
 #%%
+# make the fig 2 in the paper
 with open(os.path.join(result_path, title + '_top_biwords_condition.pkl'), 'rb') as f:
     top_feat, weights = pickle.load(f)
     f.close()

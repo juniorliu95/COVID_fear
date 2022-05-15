@@ -1,4 +1,6 @@
-"""Get the trend of number of tweets associated with vaccine"""
+"""
+The correlations between unigrams and vaccination.
+"""
 # ! after 2_5_1 or 3_5
 
 #%%
@@ -95,8 +97,7 @@ ax.set_title(f'Tendency of tweets keywords', fontsize=20)
 p1, = ax.plot(df.Date.to_list(), df.Text.values, c=(254/255.,129/255.,125/255.), linewidth=2, label=keyword_trans)
 p2, = twin.plot(df.Date.to_list(), df['Vaccine'], c=(129/255.,184/255.,223/255.), linewidth=2, label="vaccination")
 
-
-# get the index of each 1st and 6.30
+# get the index of each 1st and 9.30
 mark_date_list = ["2021-02-01", "2021-03-01", "2021-04-01", "2021-05-01", "2021-06-01", "2021-07-01", "2021-08-01", "2021-09-01", "2021-09-30"]
 date_df_list = df.Date.to_list()
 date_index_list = [date_df_list.index(date) for date in mark_date_list]
@@ -121,6 +122,7 @@ plt.close()
 print(f"correlation vaccination and {keyword_trans}: ", pearsonr(df.Text, df.Vaccine))
 
 print('Total trend saved...')
+
 # %%
 # print the cross correlation results
 correlation = np.correlate(df.Text, df.Vaccine, mode='same')

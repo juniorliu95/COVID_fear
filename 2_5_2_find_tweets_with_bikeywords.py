@@ -13,7 +13,6 @@ import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 import ginza
-# stop_words = list(ginza.STOP_WORDS)
 from ginza import *
 import matplotlib.pyplot as plt
 import japanize_matplotlib
@@ -23,7 +22,6 @@ from googletrans import Translator # googletrans==4.0.0-rc1
 
 import spacy
 nlp = spacy.load('ja_ginza')
-# nlp.Defaults.stop_words # the stop words of japanese
 
 from utils import remove_string_special_characters, remove_keywords
 
@@ -73,7 +71,6 @@ for date in tqdm(period_date_list):
         doc = nlp(pre_text)
         pre_text = ' '.join([x.string for x in doc if not x.is_stop])
         pre_text = remove_keywords(pre_text)
-        # import pdb;pdb.set_trace()
 
         if keyword in pre_text:
             text_list.append([date, file_name, text])
@@ -83,7 +80,3 @@ df_keywords.to_csv(os.path.join(result_path, f"{keyword}.csv"))
 del text_list, df_keywords
 
 print("Done!")
-
-# %%
-
-

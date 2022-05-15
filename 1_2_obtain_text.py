@@ -6,7 +6,7 @@ import codecs
 
 root_dir = os.getcwd()
 data_dir = os.path.join(root_dir, '../covid19_twitter', 'dailies')
-start_date = [2021, 9, 30] # the first day to record
+start_date = [2021, 2, 1] # the first day to record
 end_date = [2021, 10, 1] # The day after the last day
 start_date_folder = '{}-{:02d}-{:02d}'.format(*start_date)
 end_date_folder = '{}-{:02d}-{:02d}'.format(*end_date)

@@ -14,7 +14,6 @@ from utils import remove_string_special_characters
 translator = Translator()
 
 title = "vaccine"
-# title = "vaccine_and_olympics"
 root_dir = os.getcwd()
 input_path = os.path.join(root_dir, 'results', title)
 

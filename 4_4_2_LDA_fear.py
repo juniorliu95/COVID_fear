@@ -1,5 +1,6 @@
 """
-make the LDA of four sentiments
+make the LDA of fear emotion
+Fig 6, 7 in the manuscript
 """
 
 #%%
@@ -20,7 +21,6 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.decomposition import LatentDirichletAllocation
 
 import ginza
-# stop_words = list(ginza.STOP_WORDS)
 from ginza import *
 import spacy
 nlp = spacy.load('ja_ginza')
@@ -151,6 +151,7 @@ if os.path.exists(trans_path):
 
 
 #%%
+# Fig 6
 plot_top_words(lda, tf_feature_names, n_top_words, '', title + "_" + emotion, n_components, figsize=(15, 10))
 plot_word_clouds(lda, tf_feature_names, n_top_words_wc, f'Topics in {title} LDA model of {emotion} emotion', title + "_" + emotion, n_components)
 
@@ -162,7 +163,7 @@ plot_word_clouds(lda, tf_feature_names, n_top_words_wc, f'Topics in {title} LDA 
 # save the fear texts
 import pandas as pd
 df = pd.DataFrame(text_list, columns=['text'])
-df.to_csv(os.path.join(root_dir, 'results', 'R', f'LDA_{emotion}_text.csv'), index=False)
+df.to_csv(os.path.join(root_dir, 'results', 'data', f'LDA_{emotion}_text.csv'), index=False)
 
 
 #%%
@@ -189,6 +190,7 @@ result = stats.ttest_1samp((df_topic["Infection"]/df_topic["Vaccine confidence"]
 result
 
 # %%
+# Fig 7
 # draw the trend of different topics
 # sb.lineplot(data=df_topic)
 plt.figure(figsize=(10, 5))

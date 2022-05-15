@@ -1,6 +1,5 @@
 """
-Make the 1-gram results of the japanese
-Save the results of different time periods
+Make the monthly unigram results, which is the fig 1 in manuscript
 """
 #%%
 import os
@@ -13,7 +12,6 @@ import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 import ginza
-# stop_words = list(ginza.STOP_WORDS)
 from ginza import *
 import matplotlib.pyplot as plt
 import japanize_matplotlib
@@ -23,7 +21,6 @@ from googletrans import Translator # googletrans==4.0.0-rc1
 
 import spacy
 nlp = spacy.load('ja_ginza')
-# nlp.Defaults.stop_words # the stop words of japanese
 
 from utils import remove_string_special_characters, remove_keywords
 
@@ -42,7 +39,7 @@ month_list = ["February", "March", "April", "May", "June", "July", "August", "Se
 state_list = ["{:02d}".format(i) for i in range(2, 10)]
 state_list.append("total")
 
-# kick out vaccine-related words
+# kick out stop words and vaccine-related words
 new_stop_words = ['で', 'けど', 'ませ', 'って', 'まし', 'てる', ' rt ', ' for ', ' of ']
 korona_words = ['新型', '肺炎', 'コロナ','新型コロナ', '新型コロナウイルス', '新型コロナウィルス', 'ウイルス', 'ウィルス', 'コロ', 'covid', ' cov ', 'coronavirus', 'covid-19', 'vaccine', 'ワクチン', '接種']
 new_stop_words.extend(korona_words)
@@ -272,6 +269,7 @@ if os.path.exists(os.path.join(root_dir, 'data', 'top_words_conditions_trans.csv
     del df_trans_sort
 
 #%%
+# make the fig 1 in the paper
 with open(os.path.join(result_path, title + '_top_words_condition.pkl'), 'rb') as f:
     top_feat, weights = pickle.load(f)
     f.close()

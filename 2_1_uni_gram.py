@@ -12,12 +12,11 @@ from ginza import *
 
 import spacy
 nlp = spacy.load('ja_ginza')
-# nlp.Defaults.stop_words # the stop words of japanese
 
 from utils import remove_string_special_characters, remove_keywords
 
 title = "vaccine"
-# title = "vaccine_and_olympics"
+
 root_dir = os.getcwd()
 input_path = os.path.join(root_dir, 'results', title)
 date_list = list(sorted(os.listdir(input_path)))

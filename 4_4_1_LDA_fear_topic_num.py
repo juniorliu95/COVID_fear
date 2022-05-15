@@ -1,5 +1,6 @@
 """
-make the LDA of four sentiments
+Select the best number of topics for LDA modelling.
+Fig 1 in the appendix
 """
 
 #%%
@@ -21,12 +22,11 @@ from sklearn.decomposition import LatentDirichletAllocation
 from sklearn.model_selection import GridSearchCV
 
 import ginza
-# stop_words = list(ginza.STOP_WORDS)
 from ginza import *
 import spacy
 nlp = spacy.load('ja_ginza')
 
-from utils import remove_string_special_characters, remove_keywords, replace_words, plot_top_words, plot_word_clouds
+from utils import remove_string_special_characters, remove_keywords
 
 n_samples = None # number of samples. None for all samples
 n_features = None # number of features. None for max features
@@ -111,17 +111,16 @@ model.fit(tf)
 
 #%%
 # Get Log Likelyhoods from Grid Search Output
+# Fig 1 in the appendix
 log_likelihoods = model.cv_results_['mean_test_score']
 print("best number of topics: ", model.best_params_)
 
 # Show graph
-# plt.figure(figsize=(12, 8))
 plt.plot(n_topics, log_likelihoods)
 plt.xticks(n_topics)
 # plt.title("Choosing Optimal LDA Model")
 plt.xlabel("Num Topics")
 plt.ylabel(" Mean log likelihood scores")
-# plt.legend(title='Learning decay', loc='best')
 plt.show()
 
 # %%

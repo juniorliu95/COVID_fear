@@ -1,4 +1,6 @@
-"""Get the trend of number of tweets containing bigram keywords"""
+"""
+The correlations between bigrams and vaccination.
+"""
 # ! after 2_5 or 3_5
 
 #%%
@@ -23,13 +25,12 @@ end_date = "2021-09-30"
 ## ['アストラ ゼネカ', '予約 可能', 'article reuters', '会場 予約', '医療 従事者']
 trans_dict = {"アストラ ゼネカ":"Astra + Zeneca", "予約 可能":"reserve + possible", "article reuters":"article + reuters", "会場 予約":"venue + reserve","医療 従事者":"medical care + workers"}
 # keyword = "アストラ ゼネカ"
-# keyword = "予約 可能"
+keyword = "予約 可能"
 # keyword = "article reuters"
 # keyword = "会場 予約"
-keyword = "医療 従事者"
+# keyword = "医療 従事者"
 
 keyword_trans = trans_dict[keyword]
-
 keyword_dir = os.path.join(root_dir, 'results', "keywords", keyword)
 csv_file_list = [os.path.join(keyword_dir, keyword + ".csv")]
 
@@ -119,7 +120,6 @@ plt.tight_layout()
 plt.savefig(os.path.join(output_dir, f'trend_of_tweet_{keyword}_keywords.png'))
 plt.close()
 
-# ! revise
 print(f"correlation vaccination and {keyword}: ", pearsonr(df.Text, df.Vaccine))
 
 print('Total trend saved...')
@@ -132,4 +132,3 @@ max_corr = np.argmax(correlation)
 lag = lags[max_corr]
 print(keyword, lag, max_corr)
 
-# %%

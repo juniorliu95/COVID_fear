@@ -1,5 +1,6 @@
 """
 translate the text to english
+get ready for emotion detection
 """
 
 import os
@@ -17,7 +18,7 @@ title = "vaccine"
 root_dir = os.getcwd()
 input_path = os.path.join(root_dir, 'results', title)
 
-start_date = "2021-05-30"
+start_date = "2021-02-01"
 end_date = "2021-07-01"
 
 date_list = list(sorted(os.listdir(input_path)))

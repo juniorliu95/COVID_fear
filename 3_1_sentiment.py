@@ -73,6 +73,7 @@ date_df_list = df.Date.to_list()
 date_index_list = [date_df_list.index(date) for date in mark_date_list]
 
 # the bar plot for sentiment
+# Fig 4 in the paper
 fig, ax = plt.subplots(figsize=(20, 10))
 fig.subplots_adjust(right=0.75)
 df_date = df['Date'].values

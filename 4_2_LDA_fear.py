@@ -43,50 +43,48 @@ new_stop_words = ['で', 'けど', 'ませ', 'って', 'まし', 'てる', ' rt 
 korona_words = ['新型', '肺炎', 'コロナ','新型コロナ', '新型コロナウイルス', '新型コロナウィルス', 'ウイルス', 'ウィルス', 'コロ', 'covid', ' cov ', 'coronavirus', 'covid-19', 'vaccine', 'ワクチン', '接種']
 new_stop_words.extend(korona_words)
 
-# %%
-text_list = []
-text_date_list = []
-
-if not os.path.exists(os.path.join(root_dir, 'data', f'{title}_LDA_{emotion}_data.pkl')):
-    date_list = list(sorted(os.listdir(input_path)))
-    for date in date_list:
-        print(date.split(".")[0])
-        df = pd.read_csv(os.path.join(input_path, date))
-        text_date_list.extend([date.split(".")[0]]*len(df))
-        for text in df["Text"].to_list():
-            text = remove_string_special_characters(text)
-            if text is None:
-                continue
-            doc = nlp(text)
-            text = ' '.join([x.string for x in doc if not x.is_stop])
-            text = remove_keywords(text, additional=new_stop_words)
-            text_list.append(text)
-
-    with open(os.path.join(root_dir, 'data', f'{title}_LDA_{emotion}_data.pkl'), 'wb') as f:
-        pickle.dump({"Text":text_list, "Date":text_date_list}, f)
-        print('data saved ...')
-        f.close()
-else:
-    with open(os.path.join(root_dir, 'data', f'{title}_LDA_{emotion}_data.pkl'), 'rb') as f:
-        dic_temp = pickle.load(f)
-        text_list = dic_temp["Text"]
-        text_date_list = dic_temp["Date"]
-        print('data loaded ...')
-        f.close()
-
-# get the LDA model for different sentiments
-if n_samples is not None:
-    data_samples = text_list[:n_samples]
-else:
-    n_samples = len(text_list)
-    data_samples = text_list
-
 #%%
 # LDA model
 # Use tf (raw term count) features for LDA.
 print("Extracting tf features for LDA...")
 tf_model, lda = None, None
 if not os.path.exists(os.path.join(root_dir, "data", "LDA_fear_model.pkl")):
+    text_list = []
+    text_date_list = []
+
+    if not os.path.exists(os.path.join(root_dir, 'data', f'{title}_LDA_{emotion}_data.pkl')):
+        date_list = list(sorted(os.listdir(input_path)))
+        for date in date_list:
+            print(date.split(".")[0])
+            df = pd.read_csv(os.path.join(input_path, date))
+            text_date_list.extend([date.split(".")[0]]*len(df))
+            for text in df["Text"].to_list():
+                text = remove_string_special_characters(text)
+                if text is None:
+                    continue
+                doc = nlp(text)
+                text = ' '.join([x.string for x in doc if not x.is_stop])
+                text = remove_keywords(text, additional=new_stop_words)
+                text_list.append(text)
+
+        with open(os.path.join(root_dir, 'data', f'{title}_LDA_{emotion}_data.pkl'), 'wb') as f:
+            pickle.dump({"Text":text_list, "Date":text_date_list}, f)
+            print('data saved ...')
+            f.close()
+    else:
+        with open(os.path.join(root_dir, 'data', f'{title}_LDA_{emotion}_data.pkl'), 'rb') as f:
+            dic_temp = pickle.load(f)
+            text_list = dic_temp["Text"]
+            text_date_list = dic_temp["Date"]
+            print('data loaded ...')
+            f.close()
+
+    # get the LDA model for different sentiments
+    if n_samples is not None:
+        data_samples = text_list[:n_samples]
+    else:
+        n_samples = len(text_list)
+        data_samples = text_list
     tf_vectorizer = CountVectorizer(max_df=0.95, min_df=2,
                                     max_features=n_features,
                                     stop_words='english')
@@ -108,11 +106,11 @@ if not os.path.exists(os.path.join(root_dir, "data", "LDA_fear_model.pkl")):
     lda = LatentDirichletAllocation(n_components=n_components, max_iter=5,
                                     learning_method='online',
                                     learning_offset=50.,
-                                    random_state=0)
+                                    random_state=5)
     t0 = time.time()
     lda.fit(tf)
     print("done in %0.3fs." % (time.time() - t0))
-
+    
     tf_feature_names = tf_vectorizer.get_feature_names()
     tf_feature_names_temp = copy.deepcopy(tf_feature_names)
     for t_ind, tf_feature_name in enumerate(tf_feature_names_temp):

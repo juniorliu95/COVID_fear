@@ -12,7 +12,7 @@ import numpy as np
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 import ginza
-# stop_words = list(ginza.STOP_WORDS)
+
 from ginza import *
 import matplotlib.pyplot as plt
 import japanize_matplotlib
@@ -22,14 +22,12 @@ from googletrans import Translator # googletrans==4.0.0-rc1
 
 import spacy
 nlp = spacy.load('ja_ginza')
-# nlp.Defaults.stop_words # the stop words of japanese
 
 from utils import remove_string_special_characters, remove_keywords
 
 translator = Translator()
 
 title = "vaccine"
-# title = "vaccine_and_olympics"
 root_dir = os.getcwd()
 input_path = os.path.join(root_dir, 'results', title)
 date_list = list(sorted(os.listdir(input_path)))

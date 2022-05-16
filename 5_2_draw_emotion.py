@@ -10,7 +10,6 @@ import matplotlib.pyplot as plt
 import seaborn as sb
 
 keyword = "vaccine"
-# keyword = "vaccine_and_olympics"
 
 emotion_path_root = f"./results/result_csv_{keyword}" # path to the R results
 emo_path = os.path.join("./data", "emotion") # path to save the results

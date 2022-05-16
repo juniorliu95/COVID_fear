@@ -1,0 +1,11 @@
+,02 jp,02 en,03 jp,03 en,04 jp,04 en,05 jp,05 en,06 jp,06 en,07 jp,07 en,08 jp,08 en,09 jp,09 en
+0,変異,mutation,アストラ,Astra,日本,Japan,感染,infect,感染,infect,感染,infect,感染,infect,予約,reserve
+1,ファイザー,Pfizer,日本,Japan,感染,infect,日本,Japan,日本,Japan,予約,reserve,予約,reserve,感染,infect
+2,日本,Japan,感染,infect,ファイザー,Pfizer,変異,mutation,予約,reserve,会場,venue,会場,venue,会場,venue
+3,感染,infect,変異,mutation,変異,mutation,予約,reserve,会場,venue,日本,Japan,ファイザー,Pfizer,ファイザー,Pfizer
+4,効果,effect,ゼネカ,Zenka,状況,Status,ファイザー,Pfizer,ファイザー,Pfizer,ファイザー,Pfizer,日本,Japan,日本,Japan
+5,ゼネカ,Zenka,ニュース,news,世界,world,医療,medical care,変異,mutation,デルタ,delta,モデルナ,Moderna,副反応,side effect
+6,アストラ,Astra,死亡,die,アストラ,Astra,状況,status,以上,above,可能,possible,副反応,side effect,可能,possible
+7,reuters,Reuters,米国,USA,以上,above,インド,India,効果,effect,以上,above, 以上,above,情報,information
+8,医療,medical care,ファイザー,Pfizer,対策,measures,以上,above,デルタ,delta,効果,effect,可能,possible,感染者,infection
+9,ニュース,news,reuters,Reuters,医療,medical care,東京,Tokyo,reuters,Reuters,感染者,infection,デルタ,delta,以上,above

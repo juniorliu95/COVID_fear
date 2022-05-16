@@ -22,8 +22,35 @@ The daily vaccination data was collected from the official website of the Prime 
 * wordcloud
 * googletrans==4.0.0-rc1
 
-## Making images
-
+## Reproducing images in the paper
+### Fig 1
+```
+python 2_3_top_words_condition.py
+```
+### Fig 2
+```
+python 2_4_top_biwords_condition.py
+```
+### Fig 3
+```
+python 2_5_find_tweets_with_keywords.py
+```
+### Fig 4
+```
+python 3_1_sentiment.py
+```
+### Fig 5
+```
+python 3_3_draw_emotion.py
+```
+### Fig 6-7
+```
+python 4_2_LDA_fear.py
+```
+### Appendix Fig 1
+```
+python 4_1_LDA_fear_topic_num.py
+```
 
 ## Reference
 Banda, Juan M., et al. "A large-scale COVID-19 Twitter chatter dataset for open scientific research—an international collaboration." Epidemiologia 2.3 (2021): 315-324.

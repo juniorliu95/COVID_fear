@@ -30,7 +30,6 @@ translator = Translator()
 title = "vaccine"
 root_dir = os.getcwd()
 input_path = os.path.join(root_dir, 'results', title)
-# date_list = list(sorted(os.listdir(input_path)))  # uncomment if you have the date folders
 result_path = os.path.join(root_dir, 'results', 'image')
 
 save_name = "stages_bi"
@@ -165,6 +164,7 @@ weights = dict()
 if not os.path.exists(os.path.join(result_path, title + '_top_biwords_condition.pkl')):
     for i in range(len(state_list)):
         month = state_list[i] # format 02d
+        date_list = list(sorted(os.listdir(input_path)))
         period_date_list = date_list
 
         if month != "total":

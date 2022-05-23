@@ -30,7 +30,7 @@ translator = Translator()
 title = "vaccine"
 root_dir = os.getcwd()
 input_path = os.path.join(root_dir, 'results', title)
-date_list = list(sorted(os.listdir(input_path)))
+# date_list = list(sorted(os.listdir(input_path)))  # uncomment if you have the date folders
 result_path = os.path.join(root_dir, 'results', 'image')
 
 save_name = "stages_bi"

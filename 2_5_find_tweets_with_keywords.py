@@ -8,6 +8,7 @@ import re
 import pickle
 from copy import deepcopy
 import time
+from datetime import datetime, timedelta
 
 import numpy as np
 import pandas as pd
@@ -30,7 +31,6 @@ translator = Translator()
 title = "vaccine"
 root_dir = os.getcwd()
 input_path = os.path.join(root_dir, 'results', title)
-date_list = list(sorted(os.listdir(input_path)))
 
 # umcomment the keywords to get the results of unigrams or combination of multiple unigrams
 keywords = [
@@ -57,14 +57,12 @@ if not os.path.exists(result_path):
 
 start, end = '2021-02-01', '2021-09-30'
 print(f"{start}~{end}")
+dates = pd.date_range(start, end, freq='D')
+date_list = dates.strftime('%Y-%m-%d').to_list()
 
 #%%
-start = date_list.index(start)
-end = date_list.index(end)
-period_date_list = date_list[start:end+1]
-
 text_list = []
-for date in tqdm(period_date_list):
+for date in tqdm(date_list):
     date_path = os.path.join(input_path, date)
     file_list = os.listdir(date_path)
     
@@ -86,10 +84,12 @@ for date in tqdm(period_date_list):
             if keyword not in pre_text:
                 mark = False
         if mark:
-            text_list.append([date, file_name, text])
+            text_list.append([date, file_name])
 
-df_keywords = pd.DataFrame(text_list, columns=["Date", "ID", "Text"])
+df_keywords = pd.DataFrame(text_list, columns=["Date", "ID"])
 df_keywords.to_csv(os.path.join(result_path, f"{keywords_title}.csv"))
 del text_list, df_keywords
 
 print("Done!")
+
+# %%

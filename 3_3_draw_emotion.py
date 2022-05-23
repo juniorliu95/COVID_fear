@@ -19,10 +19,11 @@ res_path = f"./results/image"
 if not os.path.exists(res_path):
     os.makedirs(res_path)
 
-file_names = os.listdir(emotion_path_root)
-file_names.sort()
-file_names = file_names
-date = [file_name.split(".")[0] for file_name in file_names]
+
+start_date = "2021-02-01"
+end_date = "2021-09-30"
+dates = pd.date_range(start_date, end_date, freq='D')
+dates = dates.strftime('%Y-%m-%d').to_list()
 
 pos_data = []
 neg_data = []
@@ -31,6 +32,8 @@ neg_list = ['anger', 'disgust','fear','sadness']
 
 pos_df, neg_df = None, None
 if not os.path.exists(os.path.join(emo_path, "emotion_pos.csv")):
+    file_names = os.listdir(emotion_path_root)
+    file_names.sort()
     for i, file_name in enumerate(file_names):
         if "copy" in file_name:
             continue
@@ -58,13 +61,13 @@ if not os.path.exists(os.path.join(emo_path, "emotion_pos.csv")):
         res_temp = []
         for pos_emo in pos_list:
             valence = temp.loc[temp.Sentiment=="POSITIVE"][pos_emo].sum() / len(temp.loc[temp.Sentiment!="MIXED"].loc[temp.Sentiment!="NEUTRAL"])
-            res_temp.append([date[i], pos_emo, valence])
+            res_temp.append([dates[i], pos_emo, valence])
         pos_data.extend(res_temp[:])
 
         res_temp = []
         for neg_emo in neg_list:
             valence = temp.loc[temp.Sentiment=="NEGATIVE"][neg_emo].sum() / len(temp.loc[temp.Sentiment!="MIXED"].loc[temp.Sentiment!="NEUTRAL"])
-            res_temp.append([date[i], neg_emo, valence])
+            res_temp.append([dates[i], neg_emo, valence])
         neg_data.extend(res_temp[:])
     for pos in pos_data:
         if len(pos) == 4:
@@ -80,13 +83,9 @@ else:
 # import pdb;pdb.set_trace()
 
 #%%
-# index of the point when vaccination start
-dates = np.unique(pos_df['Date'])
-dates = [date.replace("_", "-") for date in dates]
-# get the index of each 1st and 6.30
+# get the index of each 1st and 9.30
 mark_date_list = ["2021-02-01", "2021-03-01", "2021-04-01", "2021-05-01", "2021-06-01", "2021-07-01", "2021-08-01", "2021-09-01", "2021-09-30"]
 date_index_list = [dates.index(date) for date in mark_date_list]
-
 
 fig, axes = plt.subplots(nrows=2, ncols=1, sharex=True, sharey=True, figsize=[10, 7])
 ax = axes[0]

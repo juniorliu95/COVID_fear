@@ -13,7 +13,6 @@ import pandas as pd
 import csv
 
 title = 'vaccine'
-# title = 'vaccine_and_olympics'
 
 start_date = '2021-02-01'
 end_date = '2021-10-01'

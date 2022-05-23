@@ -21,6 +21,8 @@ if not os.path.exists(output_dir):
 
 start_date = "2021-02-01"
 end_date = "2021-09-30"
+dates = pd.date_range(start_date, end_date, freq='D')
+dates = dates.strftime('%Y-%m-%d').to_list()
 
 ## ['アストラ ゼネカ', '予約 可能', 'article reuters', '会場 予約', '医療 従事者']
 trans_dict = {"アストラ ゼネカ":"Astra + Zeneca", "予約 可能":"reserve + possible", "article reuters":"article + reuters", "会場 予約":"venue + reserve","医療 従事者":"medical care + workers"}
@@ -49,20 +51,11 @@ df = df.groupby(by=["Date"],as_index=False).count()
 df = df.iloc[:,[0,2]]
 
 # get the full date
-#! change to datetime
-dates = sorted(os.listdir(os.path.join(root_dir, 'results','vaccine')))
-start = dates.index(start_date)
-end = dates.index(end_date)
-dates = dates[start:end+1]
-dates = [[date, 0] for date in dates]
-
-df_date = pd.DataFrame(dates, columns=["Date", "Text"])
-df = df_date.merge(df,how="left", on="Date")
+df_date = pd.DataFrame(dates, columns=["Date"])
+df = df_date.merge(df, how="left", on="Date")
 
 df.fillna(0, inplace=True)
-df['Text'] = df['Text_x'] + df['Text_y']
-df = df.iloc[:,[0,3]]
-df['Text'] = df['Text'].apply(int)
+df['ID'] = df['ID'].apply(int)
 
 #%%
 # add the data for the vaccination

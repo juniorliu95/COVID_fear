@@ -21,11 +21,11 @@ if not os.path.exists(result_root_dir):
 # dir of the texts to the sentiment results.
 senti_dir = os.path.join(root_dir, 'results', 'sentiments_' + title)
 data_dir = os.path.join(root_dir, 'data')
-all_date_list = list(sorted(os.listdir(senti_dir)))
+
 start_date = "2021-02-01"
 end_date = "2021-09-30"
-start, end = all_date_list.index(start_date), all_date_list.index(end_date)
-all_dates= all_date_list[start:end+1]
+dates = pd.date_range(start_date, end_date, freq='D')
+all_dates = dates.strftime('%Y-%m-%d').to_list()
 
 pos_list = []
 neg_list = []

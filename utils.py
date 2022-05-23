@@ -104,7 +104,7 @@ def plot_top_words(model, feature_names, n_top_words, title, save_name=None, n_c
 
     top_features_trans = []
 
-    for topic_idx, topic in enumerate(model.components_):
+    for topic_idx, topic in enumerate(model.components_[::-1]):
         top_features_ind = topic.argsort()[:-n_top_words - 1:-1]
         top_features = [feature_names[i] for i in top_features_ind]
 
@@ -161,7 +161,7 @@ def plot_top_words(model, feature_names, n_top_words, title, save_name=None, n_c
 def plot_word_clouds(model, feature_names, n_top_words, title, save_name=None, n_components=3, root_dir='./', en=False, trans=None, figsize=(30, 15), columns=1):
     fig, axes = plt.subplots(columns, np.ceil(n_components / columns).astype(int), figsize=figsize, sharex=True)
     axes = axes.flatten()
-    for topic_idx, topic in enumerate(model.components_):
+    for topic_idx, topic in enumerate(model.components_[::-1]):
         top_features_ind = topic.argsort()[:-n_top_words - 1:-1]
         top_features = [feature_names[i] for i in top_features_ind]
 

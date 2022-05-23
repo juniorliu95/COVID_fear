@@ -33,7 +33,7 @@ python 2_4_top_biwords_condition.py
 ```
 ### Fig 3
 ```
-python 2_5_find_tweets_with_keywords.py
+python 2_7_analyze_trend_keyword.py
 ```
 ### Fig 4
 ```
@@ -43,6 +43,7 @@ python 3_1_sentiment.py
 ```
 python 3_3_draw_emotion.py
 ```
+Note that the sentiment and emotion files are needed to make this figure.
 ### Fig 6-7
 ```
 python 4_2_LDA_fear.py

@@ -73,9 +73,9 @@ for date in tqdm(period_date_list):
         pre_text = remove_keywords(pre_text)
 
         if keyword in pre_text:
-            text_list.append([date, file_name, text])
+            text_list.append([date, file_name])
 
-df_keywords = pd.DataFrame(text_list, columns=["Date", "ID", "Text"])
+df_keywords = pd.DataFrame(text_list, columns=["Date", "ID"])
 df_keywords.to_csv(os.path.join(result_path, f"{keyword}.csv"))
 del text_list, df_keywords
 

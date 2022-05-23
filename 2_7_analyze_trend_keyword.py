@@ -11,6 +11,8 @@ import matplotlib
 import matplotlib.pyplot as plt
 import japanize_matplotlib
 import pandas as pd
+from scipy.stats import pearsonr
+from scipy.signal import correlate, correlation_lags
 
 root_dir = os.getcwd() 
 output_dir = os.path.join(root_dir, 'results', 'image')
@@ -103,6 +105,16 @@ plt.tight_layout()
 plt.savefig(os.path.join(output_dir, f'trend_of_tweet_keywords_{keyword}.png'))
 plt.close()
 
+print(f"correlation vaccination and {keyword_trans}: ", pearsonr(df.ID, df.Vaccine))
+
 print('Total trend saved...')
+# %%
+# print the cross correlation results
+correlation = np.correlate(df.ID, df.Vaccine, mode='same')
+lags = correlation_lags(len(df.ID), len(df.Vaccine), mode="same")
+
+max_corr = np.argmax(correlation)
+lag = lags[max_corr]
+print(keyword, lag, max_corr)
 
 # %%

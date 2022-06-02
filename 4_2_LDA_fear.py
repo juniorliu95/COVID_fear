@@ -204,7 +204,7 @@ result
 # draw the trend of different topics
 # sb.lineplot(data=df_topic)
 plt.figure(figsize=(10, 5))
-plt.plot(df_topic["Infection"]/df_topic["Vaccine confidence"])
+plt.plot(df_topic["Infection"]/df_topic["Vaccine confidence"], color=(18/255., 104/255., 131/255.))
 plt.axhline(1, ls="--", c="k")
 plt.xticks(date_index_list, mark_date_list)
 plt.xlim(0, len(dates))

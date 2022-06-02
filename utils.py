@@ -126,7 +126,7 @@ def plot_top_words(model, feature_names, n_top_words, title, save_name=None, n_c
         weights = topic[top_features_ind]
 
         ax = axes[topic_idx]
-        ax.barh(top_features, weights, height=0.7)
+        ax.barh(top_features, weights, height=0.7, color=(18/255., 104/255., 131/255.))
         ax.set_title(f'Topic {topic_idx +1}',
                      fontdict={'fontsize': 30})
         

@@ -124,7 +124,7 @@ print("best number of topics: ", model.best_params_)
 
 # Show graph
 n_topics = [2, 4, 6, 8, 10, 20, 30, 40, 50]
-plt.plot(n_topics, log_likelihoods)
+plt.plot(n_topics, log_likelihoods, color=(18/255., 104/255., 131/255.))
 plt.xticks(n_topics)
 # plt.title("Choosing Optimal LDA Model")
 plt.xlabel("Num Topics")

@@ -76,7 +76,7 @@ def plot_top_words(top_feat, weights, topic_keys, topic_names, title, save_name,
 
             top_features[topic_key] = top_features_temp
 
-        ax.barh(top_features[topic_key], weights[topic_key], height=0.7, alpha=0.5)
+        ax.barh(top_features[topic_key], weights[topic_key], height=0.7, color=(18/255., 104/255., 131/255.))
         ax.set_title(f'{topic_names[topic_idx]}',
                      fontdict={'fontsize': 30})
         ax.invert_yaxis()

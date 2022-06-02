@@ -80,8 +80,8 @@ df_date = df['Date'].values
 df_pos = df['POSITIVE'].values
 df_neg = df['NEGATIVE'].values
 plt.figure(figsize=(20, 10))
-plt.bar(df_date, df_pos, color='red', alpha=0.5, width=1, label='Positive')
-plt.bar(df_date, -1*df_neg, alpha=0.5, width=1, label='Negative')
+plt.bar(df_date, df_pos, color=(215/255., 131/255., 2/255.), width=1, label='Positive')
+plt.bar(df_date, -1*df_neg, color=(18/255., 109/255., 131/255.), width=1, label='Negative')
 
 if title == "vaccine":
     plt.yticks([-200, -150, -100, -50, 0, 50, 100, 150, 200], [200, 150, 100, 50, 0, 50, 100, 150, 200])

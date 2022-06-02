@@ -17,10 +17,12 @@ The daily vaccination data was collected from the official website of the Prime 
 * numpy
 * scikit-learn
 * pandas
+* seaborn
 * matplotlib
 * japanize_matplotlib
 * wordcloud
 * googletrans==4.0.0-rc1
+* ruptures
 
 ## Reproducing images in the paper
 ### Fig 1

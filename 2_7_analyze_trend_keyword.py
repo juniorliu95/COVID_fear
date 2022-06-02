@@ -80,8 +80,8 @@ fig.subplots_adjust(right=0.75)
 twin = ax.twinx()
 
 ax.set_title(f'Tendency of tweets keywords', fontsize=20)
-p1, = ax.plot(df.Date.to_list(), df.ID.values, c=(254/255.,129/255.,125/255.), linewidth=2, label=keyword_trans)
-p2, = twin.plot(df.Date.to_list(), df['Vaccine'], c=(129/255.,184/255.,223/255.), linewidth=2, label="vaccination")
+p1, = ax.plot(df.Date.to_list(), df.ID.values, c=(215/255.,131/255.,2/255.), linewidth=2, label=keyword_trans)
+p2, = twin.plot(df.Date.to_list(), df['Vaccine'], c=(18/255., 104/255., 131/255.), linewidth=2, label="vaccination")
 
 # get the index of each 1st and 9.30
 mark_date_list = ["2021-02-01", "2021-03-01", "2021-04-01", "2021-05-01", "2021-06-01", "2021-07-01", "2021-08-01", "2021-09-01", "2021-09-30"]

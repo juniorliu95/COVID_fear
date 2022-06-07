@@ -111,7 +111,7 @@ ax.legend(loc=1)
 
 plt.tight_layout()
 
-plt.savefig(os.path.join(res_path, "emotion.png"))
+plt.savefig(os.path.join(res_path, "emotion.png"), dpi=300)
 
 
 # %%

@@ -129,6 +129,6 @@ plt.xticks(n_topics)
 # plt.title("Choosing Optimal LDA Model")
 plt.xlabel("Num Topics")
 plt.ylabel(" Mean log likelihood scores")
-plt.savefig(os.path.join(result_path, "LDA_fear_topic_num.png"))
+plt.savefig(os.path.join(result_path, "LDA_fear_topic_num.png"), dpi=300)
 
 # %%

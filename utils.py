@@ -142,9 +142,9 @@ def plot_top_words(model, feature_names, n_top_words, title, save_name=None, n_c
     if save_name is not None:
         name = save_name + '_' + name
     if en:
-        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'_en.png'))
+        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'_en.png'), dpi=300)
     else:
-        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'.png'))
+        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'.png'), dpi=300)
 
     # save the translations
     if en:
@@ -206,9 +206,9 @@ def plot_word_clouds(model, feature_names, n_top_words, title, save_name=None, n
 
     # plt.subplots_adjust(top=0.90, bottom=0.05, wspace=0.90, hspace=0.3)
     if en:
-        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'_wc_en.png'))
+        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'_wc_en.png'), dpi=300)
     else:
-        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'_wc.png'))
+        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'_wc.png'), dpi=300)
 
 
 if __name__ == '__main__':

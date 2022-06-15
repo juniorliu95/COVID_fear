@@ -1,6 +1,6 @@
 # COVID_fear
 
-This project contains the code for our paper: "Fear of Infection and Sufficient Vaccine Reservation Information Might Drive Rapid Coronavirus Disease 2019 Vaccination in Japan: Evidence from Twitter Analysis".
+This project contains the code for our paper: "The Effect of Fear of Infection and Sufficient Vaccine Reservation Information on Rapid COVID-19 Vaccination in Japan: Evidence From a Retrospective Twitter Analysis".
 
 ---
 
@@ -59,7 +59,11 @@ Banda, Juan M., et al. "A large-scale COVID-19 Twitter chatter dataset for open 
 
 ## Citing this repository
 Niu Q, Liu J, Kato M, Nagai-Tanima M, Aoyama T
+
 The Effect of Fear of Infection and Sufficient Vaccine Reservation Information on Rapid COVID-19 Vaccination in Japan: Evidence From a Retrospective Twitter Analysis
+
 J Med Internet Res 2022;24(6):e37466
+
 URL: https://www.jmir.org/2022/6/e37466
+
 DOI: 10.2196/37466

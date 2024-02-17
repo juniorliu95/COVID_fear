@@ -98,7 +98,7 @@ def load_correct_trans(file_path, sheet_name):
 
 
 # LDA make top word lists
-def plot_top_words(model, feature_names, n_top_words, title, save_name=None, n_components=3, root_dir='./', en=False, trans_name='LDA_trans.csv', trans=None, figsize=(30, 15), columns=1):
+def plot_top_words(model, feature_names, n_top_words, title, save_name=None, n_components=3, root_dir='./', en=False, trans_name='LDA_trans.csv', trans=None, figsize=(15, 15), columns=1):
     fig, axes = plt.subplots(columns, np.ceil(n_components/columns).astype(int), figsize=figsize, sharex=True)
     axes = axes.flatten()
 
@@ -142,9 +142,9 @@ def plot_top_words(model, feature_names, n_top_words, title, save_name=None, n_c
     if save_name is not None:
         name = save_name + '_' + name
     if en:
-        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'_en.png'), dpi=300)
+        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'_en.png'), dpi=150)
     else:
-        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'.png'), dpi=300)
+        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'.png'), dpi=150)
 
     # save the translations
     if en:
@@ -206,9 +206,9 @@ def plot_word_clouds(model, feature_names, n_top_words, title, save_name=None, n
 
     # plt.subplots_adjust(top=0.90, bottom=0.05, wspace=0.90, hspace=0.3)
     if en:
-        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'_wc_en.png'), dpi=300)
+        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'_wc_en.png'), dpi=150)
     else:
-        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'_wc.png'), dpi=300)
+        plt.savefig(os.path.join(root_dir, 'results', 'image', name+'_wc.png'), dpi=150)
 
 
 if __name__ == '__main__':

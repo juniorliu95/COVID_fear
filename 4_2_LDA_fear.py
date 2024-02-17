@@ -212,6 +212,6 @@ plt.yscale("log")
 plt.ylim(0.4, 2.5)
 plt.ylabel('Infection/Vaccine confidence (log)')
 plt.xlabel("Date")
-plt.savefig(os.path.join(root_dir, "results", "image", "emotion_fear_ratio.png"), dpi=300)
+plt.savefig(os.path.join(root_dir, "results", "image", "emotion_fear_ratio.png"))
 
 # %%
